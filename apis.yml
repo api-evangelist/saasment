@@ -1,0 +1,33 @@
+aid: saasment
+name: Saasment
+description: >-
+  Saasment is a SaaS security posture management platform that detects misconfigurations and compliance gaps across cloud applications.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - SaaS Security
+  - SSPM
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/saasment/refs/heads/main/apis.yml
+created: '2026-03-27'
+modified: '2026-03-27'
+specificationVersion: '0.19'
+apis:
+  - aid: saasment:saasment
+    name: Saasment
+    description: >-
+      Saasment is a SaaS security posture management platform that detects misconfigurations and compliance gaps across cloud applications.
+    humanURL: https://www.saasment.com
+    tags:
+      - SaaS Security
+    properties:
+      - type: Documentation
+        url: https://www.saasment.com/resources
+common:
+  - type: Website
+    url: https://www.saasment.com
+  - type: Documentation
+    url: https://www.saasment.com/resources
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
