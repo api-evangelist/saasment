@@ -1,0 +1,327 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Saasment API"
+  description: "AI-powered SaaS security posture management and cloud cost optimization platform providing misconfiguration detection, compliance assessment, and cost recommendations."
+  tags:
+    - SaaS Security
+    - SSPM
+    - Cloud Security
+    - Compliance
+    - Cost Optimization
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAASMENT_API_TOKEN: SAASMENT_API_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: saasment
+      baseUri: https://api.saasment.com/v1
+      description: "Saasment SaaS security posture management and cost optimization API"
+      authentication:
+        type: bearer
+        token: "{{SAASMENT_API_TOKEN}}"
+      resources:
+        - name: security-posture
+          path: /posture
+          description: "Security posture scoring and application monitoring"
+          operations:
+            - name: get-posture-score
+              method: GET
+              description: "Get overall SaaS security posture score and domain breakdown"
+              inputParameters:
+                - name: app_ids
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of application IDs to filter"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-monitored-applications
+              method: GET
+              description: "List all SaaS applications being monitored"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+                - name: per_page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Items per page"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: misconfigurations
+          path: /misconfigurations
+          description: "Security misconfiguration detection and remediation"
+          operations:
+            - name: list-misconfigurations
+              method: GET
+              description: "List detected security misconfigurations across monitored applications"
+              inputParameters:
+                - name: severity
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by severity: critical, high, medium, low, info"
+                - name: app_id
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by application ID"
+                - name: status
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by status: open, in_progress, resolved, accepted"
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-misconfiguration
+              method: GET
+              description: "Get details of a specific misconfiguration"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Misconfiguration ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-misconfiguration-status
+              method: PATCH
+              description: "Update misconfiguration status (resolve, accept, etc.)"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Misconfiguration ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  status: "{{tools.status}}"
+                  notes: "{{tools.notes}}"
+
+        - name: compliance
+          path: /compliance
+          description: "Compliance framework assessment and reporting"
+          operations:
+            - name: list-compliance-frameworks
+              method: GET
+              description: "List available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-compliance-assessments
+              method: GET
+              description: "List compliance assessment results by framework and application"
+              inputParameters:
+                - name: framework_id
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by framework ID"
+                - name: app_id
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by application ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: cost-optimization
+          path: /cost
+          description: "SaaS and cloud cost optimization recommendations"
+          operations:
+            - name: list-cost-recommendations
+              method: GET
+              description: "List cost optimization recommendations including unused licenses"
+              inputParameters:
+                - name: app_id
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by application ID"
+                - name: min_savings
+                  in: query
+                  type: number
+                  required: false
+                  description: "Minimum estimated annual savings"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-cost-summary
+              method: GET
+              description: "Get summary of SaaS/cloud spend with optimization potential"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: integrations
+          path: /integrations
+          description: "SaaS application integration management"
+          operations:
+            - name: list-integrations
+              method: GET
+              description: "List configured SaaS application integrations"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-integration
+              method: POST
+              description: "Connect a new SaaS application for monitoring"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  app_type: "{{tools.app_type}}"
+                  credentials: "{{tools.credentials}}"
+
+        - name: alerts
+          path: /alerts
+          description: "Security alert management"
+          operations:
+            - name: list-alerts
+              method: GET
+              description: "List security alerts generated by posture monitoring"
+              inputParameters:
+                - name: severity
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by severity"
+                - name: status
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by status"
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: saasment-rest
+      resources:
+        - path: /v1/posture/score
+          name: posture-score
+          description: "Security posture score"
+          operations:
+            - method: GET
+              name: get-posture-score
+              description: "Get SaaS security posture score"
+              call: "saasment.get-posture-score"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/misconfigurations
+          name: misconfigurations
+          description: "Security misconfigurations"
+          operations:
+            - method: GET
+              name: list-misconfigurations
+              description: "List security misconfigurations"
+              call: "saasment.list-misconfigurations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/cost/recommendations
+          name: cost-recommendations
+          description: "Cost optimization recommendations"
+          operations:
+            - method: GET
+              name: list-cost-recommendations
+              description: "List cost optimization recommendations"
+              call: "saasment.list-cost-recommendations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: saasment-mcp
+      transport: http
+      tools:
+        - name: get-posture-score
+          description: "Get overall SaaS security posture score and domain breakdown"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.get-posture-score"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-misconfigurations
+          description: "List detected security misconfigurations with severity and remediation"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-misconfigurations"
+          with:
+            severity: "tools.severity"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-cost-recommendations
+          description: "List cloud cost optimization recommendations"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-cost-recommendations"
+          outputParameters:
+            - type: object
+              mapping: "$."

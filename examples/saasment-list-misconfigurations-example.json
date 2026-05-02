@@ -1,0 +1,51 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.saasment.com/v1/misconfigurations",
+    "headers": {
+      "Authorization": "Bearer {token}",
+      "Content-Type": "application/json"
+    },
+    "parameters": {
+      "severity": "high",
+      "status": "open",
+      "page": 1,
+      "per_page": 20
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "mc-001",
+          "title": "MFA Not Enforced for Admin Users",
+          "description": "Multi-factor authentication is not required for administrator accounts in your Microsoft 365 tenant.",
+          "severity": "high",
+          "category": "Identity Security",
+          "app_id": "app-m365-001",
+          "app_name": "Microsoft 365",
+          "status": "open",
+          "remediation": "Navigate to Azure Active Directory > Security > Conditional Access and create a policy requiring MFA for all admin roles.",
+          "detected_at": "2026-04-28T09:15:00Z",
+          "updated_at": "2026-04-28T09:15:00Z"
+        },
+        {
+          "id": "mc-002",
+          "title": "Excessive OAuth Permissions Granted",
+          "description": "Third-party application 'Zapier' has been granted full read/write access to Google Workspace data.",
+          "severity": "high",
+          "category": "Access Control",
+          "app_id": "app-gws-001",
+          "app_name": "Google Workspace",
+          "status": "open",
+          "remediation": "Review OAuth app permissions in Google Admin Console and restrict to minimum required scopes.",
+          "detected_at": "2026-04-29T14:30:00Z",
+          "updated_at": "2026-04-29T14:30:00Z"
+        }
+      ],
+      "total": 47,
+      "page": 1
+    }
+  }
+}

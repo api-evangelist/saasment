@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "saasment": "https://api.saasment.com/vocab/",
+    "security": "https://w3id.org/security#",
+
+    "Misconfiguration": "saasment:Misconfiguration",
+    "SecurityPosture": "saasment:SecurityPosture",
+    "MonitoredApplication": "saasment:MonitoredApplication",
+    "ComplianceAssessment": "saasment:ComplianceAssessment",
+    "CostRecommendation": "saasment:CostRecommendation",
+    "SecurityAlert": "saasment:SecurityAlert",
+
+    "id": "@id",
+    "title": "schema:name",
+    "description": "schema:description",
+    "severity": "saasment:severity",
+    "category": "schema:category",
+    "status": "schema:status",
+    "remediation": "saasment:remediation",
+    "detected_at": "schema:startDate",
+    "updated_at": "schema:dateModified",
+    "app_name": "schema:applicationName",
+    "posture_score": "saasment:postureScore",
+    "misconfiguration_count": "saasment:misconfigurationCount",
+    "overall_score": "saasment:overallScore",
+    "potential_savings": "saasment:potentialSavings",
+    "estimated_annual_savings": "saasment:estimatedAnnualSavings",
+    "connected": "schema:isAccessibleForFree",
+    "last_scanned": "schema:dateModified",
+    "compliance_score": "saasment:complianceScore",
+    "controls_passed": "saasment:controlsPassed",
+    "controls_failed": "saasment:controlsFailed"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/saasment/main/json-schema/saasment-application-schema.json",
+  "title": "Saasment Monitored Application",
+  "description": "A SaaS application being monitored by Saasment for security posture management.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique application identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Application display name"
+    },
+    "category": {
+      "type": "string",
+      "description": "Application category (e.g., Identity & Access Management, Collaboration, CRM)"
+    },
+    "vendor": {
+      "type": "string",
+      "description": "Software vendor name"
+    },
+    "connected": {
+      "type": "boolean",
+      "description": "Whether the application integration is active"
+    },
+    "posture_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Security posture score for this application"
+    },
+    "misconfiguration_count": {
+      "type": "integer",
+      "description": "Number of open misconfigurations detected"
+    },
+    "last_scanned": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last security scan"
+    }
+  },
+  "required": ["id", "name", "connected"]
+}

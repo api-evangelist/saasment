@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/saasment/main/json-schema/saasment-misconfiguration-schema.json",
+  "title": "Saasment Misconfiguration",
+  "description": "A security misconfiguration detected by Saasment SSPM across monitored SaaS applications.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the misconfiguration"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short descriptive title of the misconfiguration"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the security issue"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low", "info"],
+      "description": "Risk severity level of the misconfiguration"
+    },
+    "category": {
+      "type": "string",
+      "description": "Security category (e.g., Identity Security, Access Control, Data Protection)"
+    },
+    "app_id": {
+      "type": "string",
+      "description": "ID of the SaaS application where the misconfiguration was detected"
+    },
+    "app_name": {
+      "type": "string",
+      "description": "Name of the SaaS application"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "in_progress", "resolved", "accepted"],
+      "description": "Current remediation status"
+    },
+    "remediation": {
+      "type": "string",
+      "description": "Step-by-step remediation guidance"
+    },
+    "detected_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the misconfiguration was first detected"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of last status update"
+    }
+  },
+  "required": ["id", "title", "severity", "category", "app_id", "status"]
+}

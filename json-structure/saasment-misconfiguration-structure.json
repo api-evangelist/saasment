@@ -1,0 +1,32 @@
+{
+  "title": "Saasment Misconfiguration Structure",
+  "description": "JSON structure documentation for Saasment SSPM misconfiguration data model",
+  "type": "object",
+  "structure": {
+    "id": {"type": "string", "description": "Unique misconfiguration ID"},
+    "title": {"type": "string", "description": "Short issue title"},
+    "description": {"type": "string", "description": "Detailed issue description"},
+    "severity": {
+      "type": "string",
+      "description": "Risk severity: critical, high, medium, low, or info",
+      "enum": ["critical", "high", "medium", "low", "info"]
+    },
+    "category": {
+      "type": "string",
+      "description": "Security domain (Identity Security, Access Control, Data Protection, etc.)"
+    },
+    "app_id": {"type": "string", "description": "Source SaaS application ID"},
+    "app_name": {"type": "string", "description": "Source SaaS application name"},
+    "status": {
+      "type": "string",
+      "enum": ["open", "in_progress", "resolved", "accepted"],
+      "description": "Remediation workflow state"
+    },
+    "remediation": {
+      "type": "string",
+      "description": "Step-by-step remediation instructions"
+    },
+    "detected_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}

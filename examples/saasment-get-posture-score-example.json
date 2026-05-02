@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.saasment.com/v1/posture/score",
+    "headers": {
+      "Authorization": "Bearer {token}",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "overall_score": 72,
+      "grade": "C",
+      "domains": [
+        {
+          "name": "Identity & Access",
+          "score": 65,
+          "misconfigurations": 12
+        },
+        {
+          "name": "Data Protection",
+          "score": 78,
+          "misconfigurations": 6
+        },
+        {
+          "name": "Compliance",
+          "score": 81,
+          "misconfigurations": 4
+        },
+        {
+          "name": "Threat Detection",
+          "score": 70,
+          "misconfigurations": 8
+        }
+      ],
+      "last_updated": "2026-05-02T08:00:00Z"
+    }
+  }
+}

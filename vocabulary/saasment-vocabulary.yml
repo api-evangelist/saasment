@@ -1,0 +1,119 @@
+vocabulary:
+  name: Saasment SSPM Vocabulary
+  description: Domain vocabulary for SaaS Security Posture Management, cloud cost optimization, and security compliance terms used by Saasment.
+  version: "1.0.0"
+  created: "2026-05-02"
+  url: https://www.saasment.com
+
+terms:
+  - term: SSPM
+    label: SaaS Security Posture Management
+    definition: >-
+      A security discipline that continuously monitors, assesses, and improves the
+      security configuration of SaaS applications, providing visibility into
+      misconfigurations, access risks, and unmanaged integrations.
+    tags:
+      - Security
+      - SaaS
+      - Posture Management
+
+  - term: Misconfiguration
+    label: Security Misconfiguration
+    definition: >-
+      An incorrect or suboptimal security setting in a SaaS application that creates
+      risk, such as excessive permissions, disabled MFA, or overly permissive sharing
+      policies.
+    tags:
+      - Security
+      - Risk
+
+  - term: PostureScore
+    label: Security Posture Score
+    definition: >-
+      A numeric score (0-100) representing the overall security health of an
+      organization's SaaS estate, calculated from misconfiguration severity counts
+      and compliance status across monitored applications.
+    tags:
+      - Security
+      - Metrics
+
+  - term: SecurityDomain
+    label: Security Domain
+    definition: >-
+      A category of security controls such as Identity Security, Access Control,
+      Data Protection, or Compliance used to organize posture scoring.
+    tags:
+      - Security
+      - Classification
+
+  - term: ComplianceFramework
+    label: Compliance Framework
+    definition: >-
+      A structured set of security controls and requirements such as SOC 2, ISO 27001,
+      GDPR, NIST, or CIS Benchmarks against which SaaS configurations are evaluated.
+    tags:
+      - Compliance
+      - Standards
+
+  - term: UnusedLicense
+    label: Unused License
+    definition: >-
+      A paid SaaS software license assigned to a user who has not logged in or used
+      the application within a defined period, representing a cost optimization opportunity.
+    tags:
+      - Cost Optimization
+      - License Management
+
+  - term: OAuthPermission
+    label: OAuth Permission
+    definition: >-
+      An authorization grant allowing a third-party application to access SaaS data.
+      Excessive OAuth permissions are a common source of SSPM findings.
+    tags:
+      - Access Control
+      - OAuth
+
+  - term: Integration
+    label: SaaS Integration
+    definition: >-
+      A connection between a SaaS application and Saasment that enables continuous
+      security monitoring, configuration scanning, and anomaly detection.
+    tags:
+      - Integration
+      - Monitoring
+
+  - term: AttackSimulation
+    label: Breach and Attack Simulation
+    definition: >-
+      Automated testing of security controls by simulating attacker behaviors to
+      identify gaps in detection and response capabilities.
+    tags:
+      - Security Testing
+      - BAS
+
+  - term: Severity
+    label: Finding Severity
+    definition: >-
+      A risk rating applied to misconfigurations: critical (immediate action), high
+      (urgent), medium (scheduled), low (best practice), or info (informational).
+    tags:
+      - Risk
+      - Classification
+
+  - term: Remediation
+    label: Security Remediation
+    definition: >-
+      The process of fixing a security misconfiguration by following prescribed
+      steps to bring the affected SaaS application into a secure configuration state.
+    tags:
+      - Security
+      - Operations
+
+  - term: CostOptimization
+    label: Cloud Cost Optimization
+    definition: >-
+      Analysis and recommendations to reduce SaaS and cloud spending by identifying
+      unused licenses, redundant subscriptions, and rightsizing opportunities.
+    tags:
+      - Cost Management
+      - FinOps

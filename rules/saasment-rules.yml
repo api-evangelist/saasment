@@ -1,0 +1,91 @@
+extends: spectral:oas
+rules:
+  saasment-operation-summary-title-case:
+    description: All operation summaries must use Title Case
+    message: "Operation summary '{{value}}' must use Title Case"
+    given: "$.paths[*][*].summary"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-z]*)( [A-Z][a-z]*)*$"
+
+  saasment-security-bearer-required:
+    description: All endpoints except public must require BearerAuth security
+    message: "Endpoint must declare security requirements"
+    given: "$.paths[*][*]"
+    severity: error
+    then:
+      field: security
+      function: defined
+
+  saasment-operation-ids-kebab-case:
+    description: Operation IDs should use camelCase
+    message: "Operation ID '{{value}}' should use camelCase"
+    given: "$.paths[*][*].operationId"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  saasment-tags-required:
+    description: All operations must have at least one tag
+    message: "Operation must have at least one tag"
+    given: "$.paths[*][*]"
+    severity: warn
+    then:
+      field: tags
+      function: truthy
+
+  saasment-response-200-defined:
+    description: All operations must define a success response
+    message: "Operation must define at least a 200 or 201 response"
+    given: "$.paths[*][get,put,patch].responses"
+    severity: error
+    then:
+      field: "200"
+      function: defined
+
+  saasment-error-responses-defined:
+    description: Operations should define 401 unauthorized response
+    message: "Operation should define 401 response for authentication errors"
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    severity: warn
+    then:
+      field: "401"
+      function: defined
+
+  saasment-pagination-parameters:
+    description: List endpoints should support pagination with page and per_page
+    message: "List endpoints should include page and per_page query parameters"
+    given: "$.paths[*][get]"
+    severity: info
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          properties:
+            parameters:
+              type: array
+
+  saasment-severity-enum:
+    description: Severity fields should use standard enum values
+    message: "Severity fields should use standard values: critical, high, medium, low, info"
+    given: "$.components.schemas..properties.severity"
+    severity: warn
+    then:
+      field: enum
+      function: defined
+
+  saasment-resource-ids-as-strings:
+    description: Resource ID fields should be string type for UUID compatibility
+    message: "ID fields should be string type"
+    given: "$.components.schemas..properties.id"
+    severity: info
+    then:
+      field: type
+      function: enumeration
+      functionOptions:
+        values:
+          - string

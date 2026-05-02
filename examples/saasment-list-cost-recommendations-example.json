@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.saasment.com/v1/cost/recommendations",
+    "headers": {
+      "Authorization": "Bearer {token}",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "rec-001",
+          "app_id": "app-zoom-001",
+          "app_name": "Zoom",
+          "category": "unused_license",
+          "description": "23 Zoom Pro licenses have been inactive for 90+ days",
+          "estimated_annual_savings": 4140.00,
+          "priority": "high"
+        },
+        {
+          "id": "rec-002",
+          "app_id": "app-slack-001",
+          "app_name": "Slack",
+          "category": "rightsizing",
+          "description": "Downgrade 15 Slack Pro users to free tier based on usage patterns",
+          "estimated_annual_savings": 1350.00,
+          "priority": "medium"
+        }
+      ],
+      "total": 8,
+      "total_potential_savings": 18750.00
+    }
+  }
+}

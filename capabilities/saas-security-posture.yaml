@@ -1,0 +1,321 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Saasment SaaS Security Posture Management"
+  description: "Unified workflow for SaaS security posture management, misconfiguration detection, compliance assessment, and cost optimization. Used by security teams to continuously monitor and improve their SaaS security posture."
+  tags:
+    - SaaS Security
+    - SSPM
+    - Cloud Security
+    - Compliance
+    - Cost Optimization
+    - Misconfigurations
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAASMENT_API_TOKEN: SAASMENT_API_TOKEN
+
+capability:
+  consumes:
+    - import: saasment
+      location: ./shared/saasment.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: saas-security-posture-api
+      description: "Unified REST API for SaaS security posture management and cost optimization."
+      resources:
+        - path: /v1/posture/score
+          name: posture-score
+          description: "Security posture scoring"
+          operations:
+            - method: GET
+              name: get-posture-score
+              description: "Get overall SaaS security posture score with domain breakdown"
+              call: "saasment.get-posture-score"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/posture/applications
+          name: monitored-applications
+          description: "Monitored SaaS applications"
+          operations:
+            - method: GET
+              name: list-monitored-applications
+              description: "List all monitored SaaS applications"
+              call: "saasment.list-monitored-applications"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/misconfigurations
+          name: misconfigurations
+          description: "Security misconfigurations"
+          operations:
+            - method: GET
+              name: list-misconfigurations
+              description: "List security misconfigurations by severity and status"
+              call: "saasment.list-misconfigurations"
+              with:
+                severity: "rest.severity"
+                status: "rest.status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/misconfigurations/{id}
+          name: misconfiguration
+          description: "Individual misconfiguration management"
+          operations:
+            - method: GET
+              name: get-misconfiguration
+              description: "Get misconfiguration details and remediation steps"
+              call: "saasment.get-misconfiguration"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: update-misconfiguration-status
+              description: "Update misconfiguration remediation status"
+              call: "saasment.update-misconfiguration-status"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/compliance/frameworks
+          name: compliance-frameworks
+          description: "Available compliance frameworks"
+          operations:
+            - method: GET
+              name: list-compliance-frameworks
+              description: "List available compliance frameworks"
+              call: "saasment.list-compliance-frameworks"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/compliance/assessments
+          name: compliance-assessments
+          description: "Compliance assessment results"
+          operations:
+            - method: GET
+              name: list-compliance-assessments
+              description: "List compliance assessment results"
+              call: "saasment.list-compliance-assessments"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/cost/summary
+          name: cost-summary
+          description: "Cost optimization summary"
+          operations:
+            - method: GET
+              name: get-cost-summary
+              description: "Get SaaS/cloud spend summary with optimization potential"
+              call: "saasment.get-cost-summary"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/cost/recommendations
+          name: cost-recommendations
+          description: "Cost optimization recommendations"
+          operations:
+            - method: GET
+              name: list-cost-recommendations
+              description: "List cost optimization recommendations"
+              call: "saasment.list-cost-recommendations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/integrations
+          name: integrations
+          description: "SaaS application integrations"
+          operations:
+            - method: GET
+              name: list-integrations
+              description: "List configured SaaS integrations"
+              call: "saasment.list-integrations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-integration
+              description: "Connect a new SaaS application"
+              call: "saasment.create-integration"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/alerts
+          name: security-alerts
+          description: "Security alerts"
+          operations:
+            - method: GET
+              name: list-alerts
+              description: "List security alerts"
+              call: "saasment.list-alerts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: saas-security-posture-mcp
+      transport: http
+      description: "MCP server for AI-assisted SaaS security posture management and cost optimization."
+      tools:
+        - name: get-posture-score
+          description: "Get overall SaaS security posture score with breakdown by security domain"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.get-posture-score"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-monitored-applications
+          description: "List all SaaS applications currently being monitored for security issues"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-monitored-applications"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-misconfigurations
+          description: "List detected security misconfigurations with severity levels and remediation guidance"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-misconfigurations"
+          with:
+            severity: "tools.severity"
+            app_id: "tools.app_id"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-misconfiguration
+          description: "Get detailed information about a specific misconfiguration including remediation steps"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.get-misconfiguration"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-misconfiguration-status
+          description: "Update the remediation status of a misconfiguration (resolve, accept risk, etc.)"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "saasment.update-misconfiguration-status"
+          with:
+            id: "tools.id"
+            status: "tools.status"
+            notes: "tools.notes"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-compliance-frameworks
+          description: "List available compliance frameworks for assessment (SOC 2, ISO 27001, GDPR, etc.)"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-compliance-frameworks"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-compliance-assessments
+          description: "List compliance assessment results showing pass/fail status per control"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-compliance-assessments"
+          with:
+            framework_id: "tools.framework_id"
+            app_id: "tools.app_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-cost-summary
+          description: "Get summary of total SaaS spend and potential cost savings"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.get-cost-summary"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-cost-recommendations
+          description: "List cost optimization recommendations for unused licenses and redundant subscriptions"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-cost-recommendations"
+          with:
+            app_id: "tools.app_id"
+            min_savings: "tools.min_savings"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-integrations
+          description: "List all configured SaaS application integrations and their connection status"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-integrations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-integration
+          description: "Connect a new SaaS application to Saasment for security monitoring"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "saasment.create-integration"
+          with:
+            app_type: "tools.app_type"
+            credentials: "tools.credentials"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-alerts
+          description: "List security alerts generated by posture monitoring with severity and status"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "saasment.list-alerts"
+          with:
+            severity: "tools.severity"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
