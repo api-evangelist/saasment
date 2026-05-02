@@ -58,6 +58,10 @@ common:
     url: json-schema/saasment-misconfiguration-schema.json
   - type: JSONSchema
     url: json-schema/saasment-application-schema.json
+  - type: JSONStructure
+    url: json-structure/saasment-misconfiguration-structure.json
+  - type: JSONStructure
+    url: json-structure/saasment-application-structure.json
   - type: JSONLDContext
     url: json-ld/saasment-context.jsonld
   - type: Vocabulary

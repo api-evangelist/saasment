@@ -1,0 +1,33 @@
+{
+  "title": "Saasment Monitored Application Structure",
+  "description": "JSON structure documentation for a SaaS application monitored by Saasment for security posture management",
+  "type": "object",
+  "structure": {
+    "id": {"type": "string", "description": "Unique application identifier"},
+    "name": {"type": "string", "description": "Application display name (e.g., Microsoft 365, Salesforce, Okta)"},
+    "category": {
+      "type": "string",
+      "description": "Application category: Identity & Access Management, Collaboration, CRM, DevOps, HR, Finance, etc."
+    },
+    "vendor": {"type": "string", "description": "Software vendor name"},
+    "connected": {
+      "type": "boolean",
+      "description": "Whether the Saasment integration is active and data is being collected"
+    },
+    "posture_score": {
+      "type": "number",
+      "description": "Security posture score 0-100 reflecting configuration health for this application",
+      "range": "0-100"
+    },
+    "misconfiguration_count": {
+      "type": "integer",
+      "description": "Number of open security misconfigurations detected in this application"
+    },
+    "last_scanned": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the most recent security scan"
+    }
+  },
+  "required": ["id", "name", "connected"]
+}

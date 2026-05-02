@@ -28,6 +28,8 @@ The Saasment API provides programmatic access to SaaS security posture managemen
 - [SpectralRules](rules/saasment-rules.yml)
 - [JSONSchema](json-schema/saasment-misconfiguration-schema.json)
 - [JSONSchema](json-schema/saasment-application-schema.json)
+- [JSONStructure](json-structure/saasment-misconfiguration-structure.json)
+- [JSONStructure](json-structure/saasment-application-structure.json)
 - [JSONLDContext](json-ld/saasment-context.jsonld)
 - [Vocabulary](vocabulary/saasment-vocabulary.yml)
 - [Capabilities](capabilities/saas-security-posture.yaml)
@@ -49,6 +51,7 @@ The Saasment API provides programmatic access to SaaS security posture managemen
 | JSON Schema | [json-schema/saasment-misconfiguration-schema.json](json-schema/saasment-misconfiguration-schema.json) |
 | JSON Schema | [json-schema/saasment-application-schema.json](json-schema/saasment-application-schema.json) |
 | JSON Structure | [json-structure/saasment-misconfiguration-structure.json](json-structure/saasment-misconfiguration-structure.json) |
+| JSON Structure | [json-structure/saasment-application-structure.json](json-structure/saasment-application-structure.json) |
 | JSON-LD Context | [json-ld/saasment-context.jsonld](json-ld/saasment-context.jsonld) |
 | Vocabulary | [vocabulary/saasment-vocabulary.yml](vocabulary/saasment-vocabulary.yml) |
 | Examples | [examples/](examples/) |
