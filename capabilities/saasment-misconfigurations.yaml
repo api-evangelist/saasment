@@ -1,0 +1,180 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Saasment API — Misconfigurations
+  description: 'Saasment API — Misconfigurations. 3 operations. Lead operation: List Misconfigurations. Self-contained Naftiko
+    capability covering one Saasment business surface.'
+  tags:
+  - Saasment
+  - Misconfigurations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAASMENT_API_KEY: SAASMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: saasment-misconfigurations
+    baseUri: https://api.saasment.com/v1
+    description: Saasment API — Misconfigurations business capability. Self-contained, no shared references.
+    resources:
+    - name: misconfigurations
+      path: /misconfigurations
+      operations:
+      - name: listmisconfigurations
+        method: GET
+        description: List Misconfigurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: severity
+          in: query
+          type: string
+        - name: app_id
+          in: query
+          type: string
+        - name: status
+          in: query
+          type: string
+        - name: page
+          in: query
+          type: integer
+        - name: per_page
+          in: query
+          type: integer
+    - name: misconfigurations-id
+      path: /misconfigurations/{id}
+      operations:
+      - name: getmisconfiguration
+        method: GET
+        description: Get Misconfiguration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updatemisconfigurationstatus
+        method: PATCH
+        description: Update Misconfiguration Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAASMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: saasment-misconfigurations-rest
+    port: 8080
+    description: REST adapter for Saasment API — Misconfigurations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/misconfigurations
+      name: misconfigurations
+      description: REST surface for misconfigurations.
+      operations:
+      - method: GET
+        name: listmisconfigurations
+        description: List Misconfigurations
+        call: saasment-misconfigurations.listmisconfigurations
+        with:
+          severity: rest.severity
+          app_id: rest.app_id
+          status: rest.status
+          page: rest.page
+          per_page: rest.per_page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/misconfigurations/{id}
+      name: misconfigurations-id
+      description: REST surface for misconfigurations-id.
+      operations:
+      - method: GET
+        name: getmisconfiguration
+        description: Get Misconfiguration
+        call: saasment-misconfigurations.getmisconfiguration
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatemisconfigurationstatus
+        description: Update Misconfiguration Status
+        call: saasment-misconfigurations.updatemisconfigurationstatus
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: saasment-misconfigurations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Saasment API — Misconfigurations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-misconfigurations
+      description: List Misconfigurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: saasment-misconfigurations.listmisconfigurations
+      with:
+        severity: tools.severity
+        app_id: tools.app_id
+        status: tools.status
+        page: tools.page
+        per_page: tools.per_page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-misconfiguration
+      description: Get Misconfiguration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: saasment-misconfigurations.getmisconfiguration
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-misconfiguration-status
+      description: Update Misconfiguration Status
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: saasment-misconfigurations.updatemisconfigurationstatus
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
