@@ -76,6 +76,8 @@ common:
     url: vocabulary/saasment-vocabulary.yml
   - type: Capabilities
     url: capabilities/saas-security-posture.yaml
+  - type: LLMsTxt
+    url: https://www.saasment.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
