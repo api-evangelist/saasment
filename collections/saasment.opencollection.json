@@ -1,0 +1,325 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Saasment API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security Posture",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Security Posture Score",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/posture/score",
+            "params": [
+              {
+                "name": "app_ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of application IDs to filter"
+              }
+            ]
+          },
+          "docs": "Returns the overall SaaS security posture score and breakdown by security domain including identity, access, data, and compliance."
+        },
+        {
+          "info": {
+            "name": "List Monitored Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/posture/applications",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of SaaS applications being monitored by Saasment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Misconfigurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Misconfigurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/misconfigurations",
+            "params": [
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns detected security misconfigurations across monitored SaaS applications, with severity, category, and remediation guidance."
+        },
+        {
+          "info": {
+            "name": "Get Misconfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/misconfigurations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific misconfiguration including remediation steps."
+        },
+        {
+          "info": {
+            "name": "Update Misconfiguration Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.saasment.com/v1/misconfigurations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the status of a misconfiguration (e.g., mark as resolved or accepted)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Compliance Frameworks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/compliance/frameworks"
+          },
+          "docs": "Returns available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.)."
+        },
+        {
+          "info": {
+            "name": "List Compliance Assessments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/compliance/assessments",
+            "params": [
+              {
+                "name": "framework_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns compliance assessment results by framework."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cost Optimization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Cost Optimization Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/cost/recommendations",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_savings",
+                "value": "",
+                "type": "query",
+                "description": "Minimum estimated annual savings in USD"
+              }
+            ]
+          },
+          "docs": "Returns cloud and SaaS cost optimization recommendations including unused licenses, redundant subscriptions, and rightsizing opportunities."
+        },
+        {
+          "info": {
+            "name": "Get Cost Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/cost/summary"
+          },
+          "docs": "Returns a summary of SaaS and cloud spend with optimization potential."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/integrations"
+          },
+          "docs": "Returns configured SaaS application integrations."
+        },
+        {
+          "info": {
+            "name": "Create Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.saasment.com/v1/integrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Connects a new SaaS application to Saasment for monitoring."
+        },
+        {
+          "info": {
+            "name": "Delete Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.saasment.com/v1/integrations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes a SaaS application integration from Saasment monitoring."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Security Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/alerts",
+            "params": [
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns security alerts generated by Saasment posture monitoring."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

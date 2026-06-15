@@ -1,0 +1,1406 @@
+{
+  "item": [
+    {
+      "id": "0ba365d6-9b4e-4c10-882f-33225740ad0d",
+      "name": "Security Posture",
+      "description": {
+        "content": "SaaS security posture assessment and monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3abe66c7-04d8-4892-8c71-1b9b54074de1",
+          "name": "Get Security Posture Score",
+          "request": {
+            "name": "Get Security Posture Score",
+            "description": {
+              "content": "Returns the overall SaaS security posture score and breakdown by security domain including identity, access, data, and compliance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posture",
+                "score"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of application IDs to filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06d828af-7644-4338-a89c-8a452d4d1794",
+              "name": "Security posture score",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posture",
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"overall_score\": 63.01917218158493,\n  \"grade\": \"D\",\n  \"domains\": [\n    {\n      \"name\": \"string\",\n      \"score\": 2008.2269616372205,\n      \"misconfigurations\": 7325\n    },\n    {\n      \"name\": \"string\",\n      \"score\": 1639.4857867575818,\n      \"misconfigurations\": 1635\n    }\n  ],\n  \"last_updated\": \"1960-08-01T23:12:35.429Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e89e691a-22ce-4f80-beaf-e522f50c23f2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posture",
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 8008\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc1a3a5b-4bb6-496c-8a15-8f0e1d4e38a8",
+          "name": "List Monitored Applications",
+          "request": {
+            "name": "List Monitored Applications",
+            "description": {
+              "content": "Returns a list of SaaS applications being monitored by Saasment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posture",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d09438df-78cc-495a-94bc-08b970306717",
+              "name": "List of monitored applications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posture",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"Identity & Access Management\",\n      \"vendor\": \"string\",\n      \"connected\": false,\n      \"posture_score\": 4339.382791621162,\n      \"misconfiguration_count\": 1352,\n      \"last_scanned\": \"2017-02-05T01:22:27.034Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"Identity & Access Management\",\n      \"vendor\": \"string\",\n      \"connected\": true,\n      \"posture_score\": 4391.175968138663,\n      \"misconfiguration_count\": 6002,\n      \"last_scanned\": \"1960-01-13T04:35:38.068Z\"\n    }\n  ],\n  \"total\": 6134,\n  \"page\": 3130\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e7bca1ff-8780-471d-970a-85ca91feaf99",
+      "name": "Misconfigurations",
+      "description": {
+        "content": "Misconfiguration detection and remediation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63ce90ec-d359-4a98-9773-23fb7901405c",
+          "name": "List Misconfigurations",
+          "request": {
+            "name": "List Misconfigurations",
+            "description": {
+              "content": "Returns detected security misconfigurations across monitored SaaS applications, with severity, category, and remediation guidance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "misconfigurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac038bca-345b-4396-aa1f-d01d2a3a9da8",
+              "name": "Misconfiguration list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "misconfigurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"medium\",\n      \"category\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"status\": \"resolved\",\n      \"remediation\": \"string\",\n      \"detected_at\": \"2003-03-31T16:46:20.326Z\",\n      \"updated_at\": \"1957-10-12T18:48:38.059Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"medium\",\n      \"category\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"status\": \"open\",\n      \"remediation\": \"string\",\n      \"detected_at\": \"1977-11-23T12:17:52.591Z\",\n      \"updated_at\": \"1989-10-12T03:32:04.240Z\"\n    }\n  ],\n  \"total\": 6765,\n  \"page\": 9858\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83ee04c2-76a4-425b-af6a-00894911f8e4",
+          "name": "Get Misconfiguration",
+          "request": {
+            "name": "Get Misconfiguration",
+            "description": {
+              "content": "Returns details of a specific misconfiguration including remediation steps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "misconfigurations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5503662-34cd-4568-ad41-38dbe711f668",
+              "name": "Misconfiguration details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "misconfigurations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"severity\": \"critical\",\n  \"category\": \"string\",\n  \"app_id\": \"string\",\n  \"app_name\": \"string\",\n  \"status\": \"open\",\n  \"remediation\": \"string\",\n  \"detected_at\": \"1976-03-17T04:38:26.027Z\",\n  \"updated_at\": \"1996-01-06T07:57:03.723Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "338114f2-4a84-4ce3-8ff7-c3640dd67ef5",
+          "name": "Update Misconfiguration Status",
+          "request": {
+            "name": "Update Misconfiguration Status",
+            "description": {
+              "content": "Updates the status of a misconfiguration (e.g., mark as resolved or accepted).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "misconfigurations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e03edf33-49a9-4e29-9c8c-ff6c788c2c74",
+              "name": "Misconfiguration updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "misconfigurations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"severity\": \"critical\",\n  \"category\": \"string\",\n  \"app_id\": \"string\",\n  \"app_name\": \"string\",\n  \"status\": \"open\",\n  \"remediation\": \"string\",\n  \"detected_at\": \"1976-03-17T04:38:26.027Z\",\n  \"updated_at\": \"1996-01-06T07:57:03.723Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5e83ec9d-116e-4e21-b5db-56fd58d5fba2",
+      "name": "Compliance",
+      "description": {
+        "content": "Compliance assessment and reporting",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88325909-7198-4d0d-b67e-d3bdd8dc9a63",
+          "name": "List Compliance Frameworks",
+          "request": {
+            "name": "List Compliance Frameworks",
+            "description": {
+              "content": "Returns available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compliance",
+                "frameworks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf7fafc1-0e8c-42dd-a09e-9f247ca7cc98",
+              "name": "Compliance framework list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "frameworks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18af3786-2443-4fda-a960-4ddcbf562c25",
+          "name": "List Compliance Assessments",
+          "request": {
+            "name": "List Compliance Assessments",
+            "description": {
+              "content": "Returns compliance assessment results by framework.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compliance",
+                "assessments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "framework_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e948f712-e338-4eea-902a-5563216a7086",
+              "name": "Compliance assessment results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "framework_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"framework_id\": \"string\",\n      \"framework_name\": \"string\",\n      \"app_id\": \"string\",\n      \"compliance_score\": 450.07576211900323,\n      \"controls_passed\": 7447,\n      \"controls_failed\": 2572,\n      \"assessed_at\": \"1984-12-09T07:06:09.895Z\"\n    },\n    {\n      \"framework_id\": \"string\",\n      \"framework_name\": \"string\",\n      \"app_id\": \"string\",\n      \"compliance_score\": 5746.286243540192,\n      \"controls_passed\": 2156,\n      \"controls_failed\": 1714,\n      \"assessed_at\": \"1957-06-17T04:22:03.746Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cf8b12d6-1d2b-45a3-a0a4-1b78c4e73aef",
+      "name": "Cost Optimization",
+      "description": {
+        "content": "Cloud cost analysis and optimization recommendations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cfe9a4d-56d5-4974-8ef5-afe0f8e83fe0",
+          "name": "List Cost Optimization Recommendations",
+          "request": {
+            "name": "List Cost Optimization Recommendations",
+            "description": {
+              "content": "Returns cloud and SaaS cost optimization recommendations including unused licenses, redundant subscriptions, and rightsizing opportunities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cost",
+                "recommendations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_savings",
+                  "value": "<number>",
+                  "description": "Minimum estimated annual savings in USD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0434fcae-6128-481b-a51b-92c6fb15cddf",
+              "name": "Cost optimization recommendations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cost",
+                    "recommendations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_savings",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"category\": \"redundant_subscription\",\n      \"description\": \"string\",\n      \"estimated_annual_savings\": 9329.864892528312,\n      \"priority\": \"low\"\n    },\n    {\n      \"id\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"category\": \"redundant_subscription\",\n      \"description\": \"string\",\n      \"estimated_annual_savings\": 2431.6971582378064,\n      \"priority\": \"low\"\n    }\n  ],\n  \"total\": 7049,\n  \"total_potential_savings\": 1180.4664775061558\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a56957be-edaa-4e20-a8c8-f1dca309d767",
+          "name": "Get Cost Summary",
+          "request": {
+            "name": "Get Cost Summary",
+            "description": {
+              "content": "Returns a summary of SaaS and cloud spend with optimization potential.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cost",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61f970fe-e925-483d-a3e1-5066fca46b86",
+              "name": "Cost summary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cost",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_annual_spend\": 5783.962667509276,\n  \"potential_savings\": 4594.73002059906,\n  \"unused_licenses\": 1676,\n  \"redundant_subscriptions\": 7717,\n  \"currency\": \"USD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1fcffbbb-33fb-4c74-868f-a4b7117fe154",
+      "name": "Integrations",
+      "description": {
+        "content": "SaaS application integration management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ce8421e-1390-47b2-aa87-d0457b2e16cb",
+          "name": "List Integrations",
+          "request": {
+            "name": "List Integrations",
+            "description": {
+              "content": "Returns configured SaaS application integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "564bf24e-0c59-492f-badb-68ceaa52789b",
+              "name": "Integration list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"app_name\": \"string\",\n      \"app_type\": \"string\",\n      \"status\": \"connected\",\n      \"last_synced\": \"1970-07-08T08:34:01.134Z\",\n      \"created_at\": \"1967-09-10T14:13:31.923Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"app_name\": \"string\",\n      \"app_type\": \"string\",\n      \"status\": \"connected\",\n      \"last_synced\": \"2024-05-03T07:09:52.818Z\",\n      \"created_at\": \"1950-04-22T05:54:33.527Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7962b1e2-3c75-4269-a27e-783431cab9c9",
+          "name": "Create Integration",
+          "request": {
+            "name": "Create Integration",
+            "description": {
+              "content": "Connects a new SaaS application to Saasment for monitoring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_type\": \"<string>\",\n  \"credentials\": {\n    \"key_0\": 9409,\n    \"key_1\": 6431\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd51e87d-8e9e-45ef-a546-586c9472cc4f",
+              "name": "Integration created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_type\": \"<string>\",\n  \"credentials\": {\n    \"key_0\": 3292.0588440063425,\n    \"key_1\": 3013\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"app_name\": \"string\",\n  \"app_type\": \"string\",\n  \"status\": \"disconnected\",\n  \"last_synced\": \"1986-01-12T20:25:07.680Z\",\n  \"created_at\": \"1989-07-18T11:48:31.129Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ea2b1ef-c19d-46cb-8c7e-3ff7d61876d4",
+          "name": "Delete Integration",
+          "request": {
+            "name": "Delete Integration",
+            "description": {
+              "content": "Removes a SaaS application integration from Saasment monitoring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "integrations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40a6e4c5-1cdc-463c-95f8-c42fcbbaffee",
+              "name": "Integration deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "integrations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9f237ce7-48d1-4ee8-a6be-ea363769849e",
+      "name": "Alerts",
+      "description": {
+        "content": "Security alert and notification management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1fb8621-0c4a-46c0-8e0d-ac5b22a4b9eb",
+          "name": "List Security Alerts",
+          "request": {
+            "name": "List Security Alerts",
+            "description": {
+              "content": "Returns security alerts generated by Saasment posture monitoring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2487d629-c6b6-4357-b63e-65495d9ac874",
+              "name": "Alert list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"critical\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"status\": \"open\",\n      \"created_at\": \"1966-08-25T05:46:20.026Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"high\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"status\": \"open\",\n      \"created_at\": \"2014-08-19T17:58:46.762Z\"\n    }\n  ],\n  \"total\": 3205\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.saasment.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "892e1521-fcca-41f2-9c9e-70a61ece8a72",
+    "name": "Saasment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.\n\nContact Support:\n Name: Saasment Support",
+      "type": "text/plain"
+    }
+  }
+}

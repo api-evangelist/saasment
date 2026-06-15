@@ -1,9 +1,10 @@
 aid: saasment
 name: Saasment
-description: Saasment is an AI-powered SaaS security posture management (SSPM) and cloud cost optimization platform that detects
-  misconfigurations, compliance gaps, and cost inefficiencies across cloud applications. It provides continuous monitoring,
-  automated breach and attack simulation, privileged access management, and seamless integrations with identity management
-  systems and other security tools.
+description: >-
+  Saasment is an AI-powered SaaS security posture management (SSPM) and cloud cost optimization platform that detects
+  misconfigurations, compliance gaps, and cost inefficiencies across cloud applications. It provides continuous
+  monitoring, automated breach and attack simulation, privileged access management, and seamless integrations with
+  identity management systems and other security tools.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -20,35 +21,24 @@ specificationVersion: '0.19'
 apis:
   - aid: saasment:saasment
     name: Saasment API
-    description: The Saasment API provides programmatic access to SaaS security posture management capabilities including configuration
-      scanning, compliance assessment, misconfigurations detection, cost optimization recommendations, and integration with
-      cloud identity systems to secure SaaS estates.
+    description: >-
+      The Saasment API provides programmatic access to SaaS security posture management capabilities including
+      configuration scanning, compliance assessment, misconfigurations detection, cost optimization recommendations, and
+      integration with cloud identity systems to secure SaaS estates.
     humanURL: https://www.saasment.com
     tags:
-    - SaaS Security
-    - SSPM
-    - Cloud Security
-    - Compliance
-    - Cost Optimization
+      - SaaS Security
+      - SSPM
+      - Cloud Security
+      - Compliance
+      - Cost Optimization
     properties:
-    - type: Documentation
-      url: https://www.saasment.com/resources
-    - type: Website
-      url: https://www.saasment.com
-    - type: OpenAPI
-      url: openapi/saasment-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/saasment-alerts.yaml
-    - type: NaftikoCapability
-      url: capabilities/saasment-compliance.yaml
-    - type: NaftikoCapability
-      url: capabilities/saasment-cost-optimization.yaml
-    - type: NaftikoCapability
-      url: capabilities/saasment-integrations.yaml
-    - type: NaftikoCapability
-      url: capabilities/saasment-misconfigurations.yaml
-    - type: NaftikoCapability
-      url: capabilities/saasment-security-posture.yaml
+      - type: Documentation
+        url: https://www.saasment.com/resources
+      - type: Website
+        url: https://www.saasment.com
+      - type: OpenAPI
+        url: openapi/saasment-openapi.yml
 common:
   - type: GitHubOrganization
     url: https://github.com/saasment-sspm
