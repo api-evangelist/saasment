@@ -2,13 +2,11 @@
   "repo": "saasment",
   "feeds": [
     {
-      "source": "https://www.saasment.com/resources",
-      "feed_url": "https://www.saasment.com/resources",
-      "title": "",
+      "source": "https://www.saasment.com/blog",
       "saved": 0,
-      "method": "none"
+      "error": "empty page content (JS-rendered, no posts extractable)"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:07:48Z"
 }
