@@ -40,6 +40,8 @@ apis:
       - type: OpenAPI
         url: openapi/saasment-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/saasment-agentic-access.yml
   - type: DomainSecurity
     url: security/saasment-domain-security.yml
   - type: Authentication
