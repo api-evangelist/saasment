@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Saasment Alerts Cost Optimization API
+  description: Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.
+  version: 1.0.0
+  contact:
+    name: Saasment Support
+    url: https://www.saasment.com
+servers:
+- url: https://api.saasment.com/v1
+  description: Saasment API v1
+security:
+- BearerAuth: []
+tags:
+- name: Cost Optimization
+  description: Cloud cost analysis and optimization recommendations
+paths:
+  /cost/recommendations:
+    get:
+      operationId: listCostRecommendations
+      summary: List Cost Optimization Recommendations
+      description: Returns cloud and SaaS cost optimization recommendations including unused licenses, redundant subscriptions, and rightsizing opportunities.
+      tags:
+      - Cost Optimization
+      parameters:
+      - name: app_id
+        in: query
+        schema:
+          type: string
+      - name: min_savings
+        in: query
+        schema:
+          type: number
+        description: Minimum estimated annual savings in USD
+      responses:
+        '200':
+          description: Cost optimization recommendations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostRecommendationList'
+  /cost/summary:
+    get:
+      operationId: getCostSummary
+      summary: Get Cost Summary
+      description: Returns a summary of SaaS and cloud spend with optimization potential.
+      tags:
+      - Cost Optimization
+      responses:
+        '200':
+          description: Cost summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostSummary'
+components:
+  schemas:
+    CostSummary:
+      type: object
+      properties:
+        total_annual_spend:
+          type: number
+        potential_savings:
+          type: number
+        unused_licenses:
+          type: integer
+        redundant_subscriptions:
+          type: integer
+        currency:
+          type: string
+          default: USD
+    CostRecommendationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CostRecommendation'
+        total:
+          type: integer
+        total_potential_savings:
+          type: number
+    CostRecommendation:
+      type: object
+      properties:
+        id:
+          type: string
+        app_id:
+          type: string
+        app_name:
+          type: string
+        category:
+          type: string
+          enum:
+          - unused_license
+          - redundant_subscription
+          - rightsizing
+          - consolidation
+        description:
+          type: string
+        estimated_annual_savings:
+          type: number
+        priority:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token from Saasment platform settings

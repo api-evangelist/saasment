@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Saasment Alerts Integrations API
+  description: Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.
+  version: 1.0.0
+  contact:
+    name: Saasment Support
+    url: https://www.saasment.com
+servers:
+- url: https://api.saasment.com/v1
+  description: Saasment API v1
+security:
+- BearerAuth: []
+tags:
+- name: Integrations
+  description: SaaS application integration management
+paths:
+  /integrations:
+    get:
+      operationId: listIntegrations
+      summary: List Integrations
+      description: Returns configured SaaS application integrations.
+      tags:
+      - Integrations
+      responses:
+        '200':
+          description: Integration list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationList'
+    post:
+      operationId: createIntegration
+      summary: Create Integration
+      description: Connects a new SaaS application to Saasment for monitoring.
+      tags:
+      - Integrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationRequest'
+      responses:
+        '201':
+          description: Integration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+  /integrations/{id}:
+    delete:
+      operationId: deleteIntegration
+      summary: Delete Integration
+      description: Removes a SaaS application integration from Saasment monitoring.
+      tags:
+      - Integrations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Integration deleted
+components:
+  schemas:
+    IntegrationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+    Integration:
+      type: object
+      properties:
+        id:
+          type: string
+        app_name:
+          type: string
+        app_type:
+          type: string
+        status:
+          type: string
+          enum:
+          - connected
+          - disconnected
+          - error
+        last_synced:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+    CreateIntegrationRequest:
+      type: object
+      required:
+      - app_type
+      properties:
+        app_type:
+          type: string
+          description: Type of SaaS application (e.g., salesforce, microsoft365, google-workspace, github, slack, zoom, jira, servicenow, okta, aws)
+        credentials:
+          type: object
+          description: Application-specific credentials for API access
+          additionalProperties: true
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token from Saasment platform settings

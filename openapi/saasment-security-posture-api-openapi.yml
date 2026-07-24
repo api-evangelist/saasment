@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  title: Saasment Alerts Security Posture API
+  description: Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.
+  version: 1.0.0
+  contact:
+    name: Saasment Support
+    url: https://www.saasment.com
+servers:
+- url: https://api.saasment.com/v1
+  description: Saasment API v1
+security:
+- BearerAuth: []
+tags:
+- name: Security Posture
+  description: SaaS security posture assessment and monitoring
+paths:
+  /posture/score:
+    get:
+      operationId: getPostureScore
+      summary: Get Security Posture Score
+      description: Returns the overall SaaS security posture score and breakdown by security domain including identity, access, data, and compliance.
+      tags:
+      - Security Posture
+      parameters:
+      - name: app_ids
+        in: query
+        schema:
+          type: string
+        description: Comma-separated list of application IDs to filter
+      responses:
+        '200':
+          description: Security posture score
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostureScore'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posture/applications:
+    get:
+      operationId: listMonitoredApplications
+      summary: List Monitored Applications
+      description: Returns a list of SaaS applications being monitored by Saasment.
+      tags:
+      - Security Posture
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: List of monitored applications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationList'
+components:
+  schemas:
+    PostureScore:
+      type: object
+      properties:
+        overall_score:
+          type: number
+          minimum: 0
+          maximum: 100
+        grade:
+          type: string
+          enum:
+          - A
+          - B
+          - C
+          - D
+          - F
+        domains:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              score:
+                type: number
+              misconfigurations:
+                type: integer
+        last_updated:
+          type: string
+          format: date-time
+    ApplicationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        total:
+          type: integer
+        page:
+          type: integer
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+          example: Identity & Access Management
+        vendor:
+          type: string
+        connected:
+          type: boolean
+        posture_score:
+          type: number
+        misconfiguration_count:
+          type: integer
+        last_scanned:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token from Saasment platform settings

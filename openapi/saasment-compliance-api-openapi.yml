@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Saasment Alerts Compliance API
+  description: Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.
+  version: 1.0.0
+  contact:
+    name: Saasment Support
+    url: https://www.saasment.com
+servers:
+- url: https://api.saasment.com/v1
+  description: Saasment API v1
+security:
+- BearerAuth: []
+tags:
+- name: Compliance
+  description: Compliance assessment and reporting
+paths:
+  /compliance/frameworks:
+    get:
+      operationId: listComplianceFrameworks
+      summary: List Compliance Frameworks
+      description: Returns available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.).
+      tags:
+      - Compliance
+      responses:
+        '200':
+          description: Compliance framework list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceFrameworkList'
+  /compliance/assessments:
+    get:
+      operationId: listComplianceAssessments
+      summary: List Compliance Assessments
+      description: Returns compliance assessment results by framework.
+      tags:
+      - Compliance
+      parameters:
+      - name: framework_id
+        in: query
+        schema:
+          type: string
+      - name: app_id
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Compliance assessment results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceAssessmentList'
+components:
+  schemas:
+    ComplianceFrameworkList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              version:
+                type: string
+    ComplianceAssessmentList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              framework_id:
+                type: string
+              framework_name:
+                type: string
+              app_id:
+                type: string
+              compliance_score:
+                type: number
+              controls_passed:
+                type: integer
+              controls_failed:
+                type: integer
+              assessed_at:
+                type: string
+                format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token from Saasment platform settings
