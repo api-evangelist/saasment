@@ -6,7 +6,20 @@ description: >-
   monitoring, automated breach and attack simulation, privileged access management, and seamless integrations with
   identity management systems and other security tools.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/saasment.png
 tags:
   - SaaS Security
   - SSPM
@@ -19,26 +32,84 @@ created: '2026-03-27'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: saasment:saasment
-    name: Saasment API
-    description: >-
-      The Saasment API provides programmatic access to SaaS security posture management capabilities including
-      configuration scanning, compliance assessment, misconfigurations detection, cost optimization recommendations, and
-      integration with cloud identity systems to secure SaaS estates.
-    humanURL: https://www.saasment.com
-    tags:
-      - SaaS Security
-      - SSPM
-      - Cloud Security
-      - Compliance
-      - Cost Optimization
-    properties:
-      - type: Documentation
-        url: https://www.saasment.com/resources
-      - type: Website
-        url: https://www.saasment.com
-      - type: OpenAPI
-        url: openapi/saasment-openapi.yml
+- aid: saasment:saasment-alerts-api
+  name: Saasment Alerts API
+  description: Security alert and notification management
+  humanURL: https://www.saasment.com
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/saasment-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://www.saasment.com/resources
+  - type: Website
+    url: https://www.saasment.com
+- aid: saasment:saasment-compliance-api
+  name: Saasment Compliance API
+  description: Compliance assessment and reporting
+  humanURL: https://www.saasment.com
+  tags:
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/saasment-compliance-api-openapi.yml
+  - type: Documentation
+    url: https://www.saasment.com/resources
+  - type: Website
+    url: https://www.saasment.com
+- aid: saasment:saasment-cost-optimization-api
+  name: Saasment Cost Optimization API
+  description: Cloud cost analysis and optimization recommendations
+  humanURL: https://www.saasment.com
+  tags:
+  - Cost Optimization
+  properties:
+  - type: OpenAPI
+    url: openapi/saasment-cost-optimization-api-openapi.yml
+  - type: Documentation
+    url: https://www.saasment.com/resources
+  - type: Website
+    url: https://www.saasment.com
+- aid: saasment:saasment-integrations-api
+  name: Saasment Integrations API
+  description: SaaS application integration management
+  humanURL: https://www.saasment.com
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/saasment-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://www.saasment.com/resources
+  - type: Website
+    url: https://www.saasment.com
+- aid: saasment:saasment-misconfigurations-api
+  name: Saasment Misconfigurations API
+  description: Misconfiguration detection and remediation
+  humanURL: https://www.saasment.com
+  tags:
+  - Misconfigurations
+  properties:
+  - type: OpenAPI
+    url: openapi/saasment-misconfigurations-api-openapi.yml
+  - type: Documentation
+    url: https://www.saasment.com/resources
+  - type: Website
+    url: https://www.saasment.com
+- aid: saasment:saasment-security-posture-api
+  name: Saasment Security Posture API
+  description: SaaS security posture assessment and monitoring
+  humanURL: https://www.saasment.com
+  tags:
+  - Security Posture
+  properties:
+  - type: OpenAPI
+    url: openapi/saasment-security-posture-api-openapi.yml
+  - type: Documentation
+    url: https://www.saasment.com/resources
+  - type: Website
+    url: https://www.saasment.com
 common:
   - type: AgenticAccess
     url: agentic-access/saasment-agentic-access.yml
