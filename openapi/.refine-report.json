@@ -1,0 +1,24 @@
+{
+  "provider": "saasment",
+  "sources": [
+    "saasment-alerts-api-openapi.yml",
+    "saasment-compliance-api-openapi.yml",
+    "saasment-cost-optimization-api-openapi.yml",
+    "saasment-integrations-api-openapi.yml",
+    "saasment-misconfigurations-api-openapi.yml",
+    "saasment-security-posture-api-openapi.yml"
+  ],
+  "outputs": [
+    "saasment-alerts-api-openapi.yml",
+    "saasment-compliance-api-openapi.yml",
+    "saasment-cost-optimization-api-openapi.yml",
+    "saasment-integrations-api-openapi.yml",
+    "saasment-misconfigurations-api-openapi.yml",
+    "saasment-security-posture-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

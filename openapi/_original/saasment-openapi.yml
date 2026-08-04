@@ -1,0 +1,631 @@
+openapi: 3.1.0
+info:
+  title: Saasment API
+  description: >-
+    Saasment API provides programmatic access to AI-powered SaaS security
+    posture management (SSPM) and cloud cost optimization capabilities.
+    The API enables automated security configuration scanning, compliance
+    assessment, misconfiguration detection, breach and attack simulation,
+    privileged access management, and cost optimization recommendations
+    across your SaaS and cloud application estate.
+  version: 1.0.0
+  contact:
+    name: Saasment Support
+    url: https://www.saasment.com
+servers:
+  - url: https://api.saasment.com/v1
+    description: Saasment API v1
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Security Posture
+    description: SaaS security posture assessment and monitoring
+  - name: Misconfigurations
+    description: Misconfiguration detection and remediation
+  - name: Compliance
+    description: Compliance assessment and reporting
+  - name: Cost Optimization
+    description: Cloud cost analysis and optimization recommendations
+  - name: Integrations
+    description: SaaS application integration management
+  - name: Alerts
+    description: Security alert and notification management
+
+paths:
+  /posture/score:
+    get:
+      operationId: getPostureScore
+      summary: Get Security Posture Score
+      description: >-
+        Returns the overall SaaS security posture score and breakdown by
+        security domain including identity, access, data, and compliance.
+      tags:
+        - Security Posture
+      parameters:
+        - name: app_ids
+          in: query
+          schema:
+            type: string
+          description: Comma-separated list of application IDs to filter
+      responses:
+        '200':
+          description: Security posture score
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostureScore'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /posture/applications:
+    get:
+      operationId: listMonitoredApplications
+      summary: List Monitored Applications
+      description: Returns a list of SaaS applications being monitored by Saasment.
+      tags:
+        - Security Posture
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: List of monitored applications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationList'
+
+  /misconfigurations:
+    get:
+      operationId: listMisconfigurations
+      summary: List Misconfigurations
+      description: >-
+        Returns detected security misconfigurations across monitored SaaS
+        applications, with severity, category, and remediation guidance.
+      tags:
+        - Misconfigurations
+      parameters:
+        - name: severity
+          in: query
+          schema:
+            type: string
+            enum: [critical, high, medium, low, info]
+        - name: app_id
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [open, in_progress, resolved, accepted]
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Misconfiguration list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MisconfigurationList'
+
+  /misconfigurations/{id}:
+    get:
+      operationId: getMisconfiguration
+      summary: Get Misconfiguration
+      description: Returns details of a specific misconfiguration including remediation steps.
+      tags:
+        - Misconfigurations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Misconfiguration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Misconfiguration'
+    patch:
+      operationId: updateMisconfigurationStatus
+      summary: Update Misconfiguration Status
+      description: Updates the status of a misconfiguration (e.g., mark as resolved or accepted).
+      tags:
+        - Misconfigurations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMisconfigurationRequest'
+      responses:
+        '200':
+          description: Misconfiguration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Misconfiguration'
+
+  /compliance/frameworks:
+    get:
+      operationId: listComplianceFrameworks
+      summary: List Compliance Frameworks
+      description: Returns available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.).
+      tags:
+        - Compliance
+      responses:
+        '200':
+          description: Compliance framework list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceFrameworkList'
+
+  /compliance/assessments:
+    get:
+      operationId: listComplianceAssessments
+      summary: List Compliance Assessments
+      description: Returns compliance assessment results by framework.
+      tags:
+        - Compliance
+      parameters:
+        - name: framework_id
+          in: query
+          schema:
+            type: string
+        - name: app_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Compliance assessment results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceAssessmentList'
+
+  /cost/recommendations:
+    get:
+      operationId: listCostRecommendations
+      summary: List Cost Optimization Recommendations
+      description: >-
+        Returns cloud and SaaS cost optimization recommendations including
+        unused licenses, redundant subscriptions, and rightsizing opportunities.
+      tags:
+        - Cost Optimization
+      parameters:
+        - name: app_id
+          in: query
+          schema:
+            type: string
+        - name: min_savings
+          in: query
+          schema:
+            type: number
+          description: Minimum estimated annual savings in USD
+      responses:
+        '200':
+          description: Cost optimization recommendations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostRecommendationList'
+
+  /cost/summary:
+    get:
+      operationId: getCostSummary
+      summary: Get Cost Summary
+      description: Returns a summary of SaaS and cloud spend with optimization potential.
+      tags:
+        - Cost Optimization
+      responses:
+        '200':
+          description: Cost summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostSummary'
+
+  /integrations:
+    get:
+      operationId: listIntegrations
+      summary: List Integrations
+      description: Returns configured SaaS application integrations.
+      tags:
+        - Integrations
+      responses:
+        '200':
+          description: Integration list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationList'
+    post:
+      operationId: createIntegration
+      summary: Create Integration
+      description: Connects a new SaaS application to Saasment for monitoring.
+      tags:
+        - Integrations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationRequest'
+      responses:
+        '201':
+          description: Integration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+
+  /integrations/{id}:
+    delete:
+      operationId: deleteIntegration
+      summary: Delete Integration
+      description: Removes a SaaS application integration from Saasment monitoring.
+      tags:
+        - Integrations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Integration deleted
+
+  /alerts:
+    get:
+      operationId: listAlerts
+      summary: List Security Alerts
+      description: Returns security alerts generated by Saasment posture monitoring.
+      tags:
+        - Alerts
+      parameters:
+        - name: severity
+          in: query
+          schema:
+            type: string
+            enum: [critical, high, medium, low]
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [open, acknowledged, resolved]
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: Alert list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertList'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token from Saasment platform settings
+
+  schemas:
+    PostureScore:
+      type: object
+      properties:
+        overall_score:
+          type: number
+          minimum: 0
+          maximum: 100
+        grade:
+          type: string
+          enum: [A, B, C, D, F]
+        domains:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              score:
+                type: number
+              misconfigurations:
+                type: integer
+        last_updated:
+          type: string
+          format: date-time
+
+    ApplicationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        total:
+          type: integer
+        page:
+          type: integer
+
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+          example: "Identity & Access Management"
+        vendor:
+          type: string
+        connected:
+          type: boolean
+        posture_score:
+          type: number
+        misconfiguration_count:
+          type: integer
+        last_scanned:
+          type: string
+          format: date-time
+
+    MisconfigurationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Misconfiguration'
+        total:
+          type: integer
+        page:
+          type: integer
+
+    Misconfiguration:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        severity:
+          type: string
+          enum: [critical, high, medium, low, info]
+        category:
+          type: string
+        app_id:
+          type: string
+        app_name:
+          type: string
+        status:
+          type: string
+          enum: [open, in_progress, resolved, accepted]
+        remediation:
+          type: string
+        detected_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    UpdateMisconfigurationRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [in_progress, resolved, accepted]
+        notes:
+          type: string
+
+    ComplianceFrameworkList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              version:
+                type: string
+
+    ComplianceAssessmentList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              framework_id:
+                type: string
+              framework_name:
+                type: string
+              app_id:
+                type: string
+              compliance_score:
+                type: number
+              controls_passed:
+                type: integer
+              controls_failed:
+                type: integer
+              assessed_at:
+                type: string
+                format: date-time
+
+    CostRecommendationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CostRecommendation'
+        total:
+          type: integer
+        total_potential_savings:
+          type: number
+
+    CostRecommendation:
+      type: object
+      properties:
+        id:
+          type: string
+        app_id:
+          type: string
+        app_name:
+          type: string
+        category:
+          type: string
+          enum: [unused_license, redundant_subscription, rightsizing, consolidation]
+        description:
+          type: string
+        estimated_annual_savings:
+          type: number
+        priority:
+          type: string
+          enum: [high, medium, low]
+
+    CostSummary:
+      type: object
+      properties:
+        total_annual_spend:
+          type: number
+        potential_savings:
+          type: number
+        unused_licenses:
+          type: integer
+        redundant_subscriptions:
+          type: integer
+        currency:
+          type: string
+          default: USD
+
+    IntegrationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+
+    Integration:
+      type: object
+      properties:
+        id:
+          type: string
+        app_name:
+          type: string
+        app_type:
+          type: string
+        status:
+          type: string
+          enum: [connected, disconnected, error]
+        last_synced:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+
+    CreateIntegrationRequest:
+      type: object
+      required:
+        - app_type
+      properties:
+        app_type:
+          type: string
+          description: >-
+            Type of SaaS application (e.g., salesforce, microsoft365, google-workspace,
+            github, slack, zoom, jira, servicenow, okta, aws)
+        credentials:
+          type: object
+          description: Application-specific credentials for API access
+          additionalProperties: true
+
+    AlertList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+        total:
+          type: integer
+
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        severity:
+          type: string
+          enum: [critical, high, medium, low]
+        app_id:
+          type: string
+        app_name:
+          type: string
+        status:
+          type: string
+          enum: [open, acknowledged, resolved]
+        created_at:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
