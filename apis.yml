@@ -126,7 +126,7 @@ common:
   - type: Blog
     url: https://www.saasment.com/blog
   - type: OpenAPI
-    url: openapi/saasment-openapi.yml
+    url: openapi/_original/saasment-openapi.yml
   - type: SpectralRules
     url: rules/saasment-rules.yml
   - type: JSONSchema
@@ -141,8 +141,6 @@ common:
     url: json-ld/saasment-context.jsonld
   - type: Vocabulary
     url: vocabulary/saasment-vocabulary.yml
-  - type: Capabilities
-    url: capabilities/saas-security-posture.yaml
   - type: LlmsText
     url: https://www.saasment.com/llms.txt
 maintainers:
