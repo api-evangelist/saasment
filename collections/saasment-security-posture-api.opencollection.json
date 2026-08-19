@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Saasment Alerts Security Posture API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security Posture",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Security Posture Score",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/posture/score",
+            "params": [
+              {
+                "name": "app_ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of application IDs to filter"
+              }
+            ]
+          },
+          "docs": "Returns the overall SaaS security posture score and breakdown by security domain including identity, access, data, and compliance."
+        },
+        {
+          "info": {
+            "name": "List Monitored Applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/posture/applications",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of SaaS applications being monitored by Saasment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

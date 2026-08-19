@@ -1,0 +1,72 @@
+# Saasment - AI-Powered SaaS & Cloud Cost Optimization
+
+## About Saasment
+
+Saasment is an AI-powered platform that automatically finds and eliminates waste in your SaaS, cloud, and AI spending. Companies save 20-40% on software costs with zero effort.
+
+## What We Do
+
+- **AI Cost Detection**: Our AI agents continuously scan your software stack to identify unused licenses, redundant tools, and optimization opportunities.
+- **Automated Savings**: We don't just find waste—we fix it. Automated actions handle license rightsizing, resource optimization, and renewal management.
+- **Cloud Optimization**: Reduce AWS, GCP, and Azure spend through reserved instance optimization, idle resource detection, and right-sizing recommendations.
+- **SaaS Management**: Get visibility into shadow IT, consolidate duplicate tools, and optimize license utilization across your organization.
+
+## Key Features
+
+1. **AI Agents**: Autonomous agents that monitor spending 24/7 and take action automatically
+2. **100+ Integrations**: Connect to all your SaaS, cloud, and financial tools
+3. **Real-time Dashboard**: Live visibility into spend, savings, and optimization opportunities
+4. **Managed Services**: Optional white-glove support for vendor negotiations and complex optimizations
+5. **Enterprise Security**: SOC 2 Type II certified, SSO/SAML, read-only integrations
+
+## Pricing
+
+- **Starter (Free)**: Up to $50k monitored spend, basic AI agents
+- **Pro (10% of savings)**: Unlimited spend, all features, priority support
+- **Enterprise (Custom)**: Managed services, vendor negotiations, dedicated account manager
+
+## Contact
+
+- Website: https://www.saasment.com
+- Get Started: https://www.saasment.com/get-started
+- Pricing: https://www.saasment.com/pricing
+- FAQ: https://www.saasment.com/faq
+
+## Company Information
+
+Saasment helps companies eliminate software waste through AI automation. Our platform has saved customers over $50M in unnecessary SaaS and cloud spend.
+
+### Use Cases
+
+- SaaS license optimization
+- Cloud cost management (AWS, GCP, Azure)
+- AI/ML cost control (OpenAI, Anthropic, etc.)
+- Shadow IT discovery
+- Vendor contract negotiations
+- Renewal management
+
+### Integrations
+
+We integrate with 100+ tools including:
+- Cloud: AWS, Google Cloud, Microsoft Azure, Cloudflare
+- SaaS: Salesforce, Slack, Zoom, GitHub, Notion, Figma
+- Identity: Okta, Google Workspace, Microsoft 365
+- Financial: QuickBooks, Xero, Stripe
+- DevOps: Datadog, PagerDuty, Jira, Linear
+
+## Technical Details
+
+- Platform: Web-based SaaS application
+- Security: SOC 2 Type II, encryption at rest and in transit
+- Authentication: SSO/SAML, OAuth 2.0
+- API: RESTful API available for Enterprise customers
+- Deployment: Cloud-hosted, no on-premise installation required
+
+## Last Updated
+
+January 2026
+
+
+
+
+

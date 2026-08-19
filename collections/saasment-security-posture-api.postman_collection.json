@@ -1,0 +1,282 @@
+{
+  "item": [
+    {
+      "id": "5cc88d83-df62-4db3-b038-a64f6d4fd620",
+      "name": "Security Posture",
+      "description": {
+        "content": "SaaS security posture assessment and monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "333a4cdd-cda7-4246-a838-a6c1ccc83bf9",
+          "name": "Get Security Posture Score",
+          "request": {
+            "name": "Get Security Posture Score",
+            "description": {
+              "content": "Returns the overall SaaS security posture score and breakdown by security domain including identity, access, data, and compliance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posture",
+                "score"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_ids",
+                  "value": "<string>",
+                  "description": "Comma-separated list of application IDs to filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf42b95a-ac85-4f99-abaa-f624920f0e44",
+              "name": "Security posture score",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posture",
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"overall_score\": 68.9204598101581,\n  \"grade\": \"C\",\n  \"domains\": [\n    {\n      \"name\": \"string\",\n      \"score\": 8884.757467175792,\n      \"misconfigurations\": 5101\n    },\n    {\n      \"name\": \"string\",\n      \"score\": 3361.7572994818133,\n      \"misconfigurations\": 9852\n    }\n  ],\n  \"last_updated\": \"1947-04-20T03:54:59.253Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c126eb14-d5f3-4bef-88df-1f874969d233",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posture",
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"code\": 6303\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2538cde8-8ed9-4b91-9c62-063f741b1bee",
+          "name": "List Monitored Applications",
+          "request": {
+            "name": "List Monitored Applications",
+            "description": {
+              "content": "Returns a list of SaaS applications being monitored by Saasment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posture",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "806c3b1e-ee6f-4e05-afd9-0add21d3ba40",
+              "name": "List of monitored applications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posture",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"Identity & Access Management\",\n      \"vendor\": \"string\",\n      \"connected\": false,\n      \"posture_score\": 8160.362625400912,\n      \"misconfiguration_count\": 7473,\n      \"last_scanned\": \"2004-04-13T15:39:43.975Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"Identity & Access Management\",\n      \"vendor\": \"string\",\n      \"connected\": true,\n      \"posture_score\": 4550.5297057534435,\n      \"misconfiguration_count\": 4780,\n      \"last_scanned\": \"1958-06-18T12:57:07.650Z\"\n    }\n  ],\n  \"total\": 7627,\n  \"page\": 196\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.saasment.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e66587fe-7b00-46f9-a255-4b46745951ab",
+    "name": "Saasment Alerts Security Posture API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.\n\nContact Support:\n Name: Saasment Support",
+      "type": "text/plain"
+    }
+  }
+}

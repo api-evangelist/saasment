@@ -1,0 +1,221 @@
+{
+  "item": [
+    {
+      "id": "51311995-de0c-4d25-aae1-2bed8baf7293",
+      "name": "Compliance",
+      "description": {
+        "content": "Compliance assessment and reporting",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5e2e0e14-5bac-4f53-945c-69a6e2a23187",
+          "name": "List Compliance Frameworks",
+          "request": {
+            "name": "List Compliance Frameworks",
+            "description": {
+              "content": "Returns available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compliance",
+                "frameworks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4230b7f2-6226-4a22-ad63-ccdcebd16d67",
+              "name": "Compliance framework list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "frameworks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"version\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a3816f2-1a31-42b8-8ede-2dc23af07483",
+          "name": "List Compliance Assessments",
+          "request": {
+            "name": "List Compliance Assessments",
+            "description": {
+              "content": "Returns compliance assessment results by framework.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compliance",
+                "assessments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "framework_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34c5a51d-1980-4ef9-af2f-f1a5a9adac88",
+              "name": "Compliance assessment results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "assessments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "framework_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"framework_id\": \"string\",\n      \"framework_name\": \"string\",\n      \"app_id\": \"string\",\n      \"compliance_score\": 7104.920933141276,\n      \"controls_passed\": 3018,\n      \"controls_failed\": 1674,\n      \"assessed_at\": \"1950-05-15T17:43:44.766Z\"\n    },\n    {\n      \"framework_id\": \"string\",\n      \"framework_name\": \"string\",\n      \"app_id\": \"string\",\n      \"compliance_score\": 1586.9098741414477,\n      \"controls_passed\": 3338,\n      \"controls_failed\": 3976,\n      \"assessed_at\": \"2020-12-10T01:15:21.885Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.saasment.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e6425e71-39ec-4a2d-a368-793a8cb46e25",
+    "name": "Saasment Alerts Compliance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.\n\nContact Support:\n Name: Saasment Support",
+      "type": "text/plain"
+    }
+  }
+}

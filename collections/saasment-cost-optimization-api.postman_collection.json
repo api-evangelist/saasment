@@ -1,0 +1,222 @@
+{
+  "item": [
+    {
+      "id": "6af70c8c-2baf-404d-9bba-bc5d9337d27f",
+      "name": "Cost Optimization",
+      "description": {
+        "content": "Cloud cost analysis and optimization recommendations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81e8f3b6-01cc-4125-8a88-53841b041229",
+          "name": "List Cost Optimization Recommendations",
+          "request": {
+            "name": "List Cost Optimization Recommendations",
+            "description": {
+              "content": "Returns cloud and SaaS cost optimization recommendations including unused licenses, redundant subscriptions, and rightsizing opportunities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cost",
+                "recommendations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_savings",
+                  "value": "<number>",
+                  "description": "Minimum estimated annual savings in USD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a7e8abf-1561-4c8d-8547-f9d9648fea92",
+              "name": "Cost optimization recommendations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cost",
+                    "recommendations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_savings",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"category\": \"redundant_subscription\",\n      \"description\": \"string\",\n      \"estimated_annual_savings\": 4309.5518984396895,\n      \"priority\": \"medium\"\n    },\n    {\n      \"id\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"category\": \"rightsizing\",\n      \"description\": \"string\",\n      \"estimated_annual_savings\": 7153.365171311914,\n      \"priority\": \"high\"\n    }\n  ],\n  \"total\": 6388,\n  \"total_potential_savings\": 7678.323508613183\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a360c2a-be64-486a-872f-1d6f4441b33e",
+          "name": "Get Cost Summary",
+          "request": {
+            "name": "Get Cost Summary",
+            "description": {
+              "content": "Returns a summary of SaaS and cloud spend with optimization potential.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cost",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45958835-83ca-4b64-b21c-c28d426ed49d",
+              "name": "Cost summary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cost",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_annual_spend\": 557.08525021534,\n  \"potential_savings\": 3064.6498644379994,\n  \"unused_licenses\": 2464,\n  \"redundant_subscriptions\": 6628,\n  \"currency\": \"USD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.saasment.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bcfbeff0-dad8-457d-817e-0a3588bb688c",
+    "name": "Saasment Alerts Cost Optimization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.\n\nContact Support:\n Name: Saasment Support",
+      "type": "text/plain"
+    }
+  }
+}

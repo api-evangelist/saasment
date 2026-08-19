@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Saasment Alerts Compliance API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Compliance Frameworks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/compliance/frameworks"
+          },
+          "docs": "Returns available compliance frameworks (SOC 2, ISO 27001, GDPR, etc.)."
+        },
+        {
+          "info": {
+            "name": "List Compliance Assessments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/compliance/assessments",
+            "params": [
+              {
+                "name": "framework_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns compliance assessment results by framework."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

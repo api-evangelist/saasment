@@ -1,0 +1,379 @@
+{
+  "item": [
+    {
+      "id": "2fdd126e-616f-46f3-879b-b873078ce7b7",
+      "name": "Misconfigurations",
+      "description": {
+        "content": "Misconfiguration detection and remediation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffa581d0-7c19-4a20-9001-0418055a18bd",
+          "name": "List Misconfigurations",
+          "request": {
+            "name": "List Misconfigurations",
+            "description": {
+              "content": "Returns detected security misconfigurations across monitored SaaS applications, with severity, category, and remediation guidance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "misconfigurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91511a01-41ee-42a0-99bf-ec9a33a69f35",
+              "name": "Misconfiguration list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "misconfigurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"high\",\n      \"category\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"status\": \"resolved\",\n      \"remediation\": \"string\",\n      \"detected_at\": \"2004-05-25T20:00:33.830Z\",\n      \"updated_at\": \"1951-07-23T04:39:26.978Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"critical\",\n      \"category\": \"string\",\n      \"app_id\": \"string\",\n      \"app_name\": \"string\",\n      \"status\": \"accepted\",\n      \"remediation\": \"string\",\n      \"detected_at\": \"1992-07-20T05:30:09.986Z\",\n      \"updated_at\": \"1976-03-23T20:57:33.844Z\"\n    }\n  ],\n  \"total\": 8746,\n  \"page\": 1722\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "688205f4-9a48-476a-95ff-7754a056f0b6",
+          "name": "Get Misconfiguration",
+          "request": {
+            "name": "Get Misconfiguration",
+            "description": {
+              "content": "Returns details of a specific misconfiguration including remediation steps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "misconfigurations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a63f7c0-04c2-4ff1-9378-de27b375533a",
+              "name": "Misconfiguration details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "misconfigurations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"severity\": \"low\",\n  \"category\": \"string\",\n  \"app_id\": \"string\",\n  \"app_name\": \"string\",\n  \"status\": \"in_progress\",\n  \"remediation\": \"string\",\n  \"detected_at\": \"1980-10-14T19:06:06.117Z\",\n  \"updated_at\": \"1983-11-17T02:24:08.253Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "babf2551-4392-4627-bcfb-9eac81305446",
+          "name": "Update Misconfiguration Status",
+          "request": {
+            "name": "Update Misconfiguration Status",
+            "description": {
+              "content": "Updates the status of a misconfiguration (e.g., mark as resolved or accepted).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "misconfigurations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bd0ba37-d1e5-47db-b685-171e92b413f1",
+              "name": "Misconfiguration updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "misconfigurations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"severity\": \"low\",\n  \"category\": \"string\",\n  \"app_id\": \"string\",\n  \"app_name\": \"string\",\n  \"status\": \"in_progress\",\n  \"remediation\": \"string\",\n  \"detected_at\": \"1980-10-14T19:06:06.117Z\",\n  \"updated_at\": \"1983-11-17T02:24:08.253Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.saasment.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "112087b5-5180-4bc5-9fd1-63a0b97f7362",
+    "name": "Saasment Alerts Misconfigurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Saasment API provides programmatic access to AI-powered SaaS security posture management (SSPM) and cloud cost optimization capabilities. The API enables automated security configuration scanning, compliance assessment, misconfiguration detection, breach and attack simulation, privileged access management, and cost optimization recommendations across your SaaS and cloud application estate.\n\nContact Support:\n Name: Saasment Support",
+      "type": "text/plain"
+    }
+  }
+}

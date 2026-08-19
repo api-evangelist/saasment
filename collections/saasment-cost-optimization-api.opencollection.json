@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Saasment Alerts Cost Optimization API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cost Optimization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Cost Optimization Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/cost/recommendations",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "min_savings",
+                "value": "",
+                "type": "query",
+                "description": "Minimum estimated annual savings in USD"
+              }
+            ]
+          },
+          "docs": "Returns cloud and SaaS cost optimization recommendations including unused licenses, redundant subscriptions, and rightsizing opportunities."
+        },
+        {
+          "info": {
+            "name": "Get Cost Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.saasment.com/v1/cost/summary"
+          },
+          "docs": "Returns a summary of SaaS and cloud spend with optimization potential."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
