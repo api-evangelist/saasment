@@ -76,6 +76,8 @@ apis:
   description: SaaS application integration management
   humanURL: https://www.saasment.com
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
