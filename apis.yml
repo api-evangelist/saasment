@@ -6,6 +6,17 @@ description: >-
   monitoring, automated breach and attack simulation, privileged access management, and seamless integrations with
   identity management systems and other security tools.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
