@@ -54,6 +54,20 @@ paths:
                 $ref: '#/components/schemas/ComplianceAssessmentList'
 components:
   schemas:
+    ComplianceFrameworkList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              version:
+                type: string
     ComplianceAssessmentList:
       type: object
       properties:
@@ -77,20 +91,6 @@ components:
               assessed_at:
                 type: string
                 format: date-time
-    ComplianceFrameworkList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              version:
-                type: string
   securitySchemes:
     BearerAuth:
       type: http

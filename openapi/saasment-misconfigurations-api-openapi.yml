@@ -121,6 +121,17 @@ components:
           - accepted
         notes:
           type: string
+    MisconfigurationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Misconfiguration'
+        total:
+          type: integer
+        page:
+          type: integer
     Misconfiguration:
       type: object
       properties:
@@ -159,17 +170,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    MisconfigurationList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Misconfiguration'
-        total:
-          type: integer
-        page:
-          type: integer
   securitySchemes:
     BearerAuth:
       type: http
