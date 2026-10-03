@@ -55,20 +55,6 @@ paths:
                 $ref: '#/components/schemas/CostSummary'
 components:
   schemas:
-    CostSummary:
-      type: object
-      properties:
-        total_annual_spend:
-          type: number
-        potential_savings:
-          type: number
-        unused_licenses:
-          type: integer
-        redundant_subscriptions:
-          type: integer
-        currency:
-          type: string
-          default: USD
     CostRecommendation:
       type: object
       properties:
@@ -106,6 +92,20 @@ components:
           type: integer
         total_potential_savings:
           type: number
+    CostSummary:
+      type: object
+      properties:
+        total_annual_spend:
+          type: number
+        potential_savings:
+          type: number
+        unused_licenses:
+          type: integer
+        redundant_subscriptions:
+          type: integer
+        currency:
+          type: string
+          default: USD
   securitySchemes:
     BearerAuth:
       type: http

@@ -68,6 +68,17 @@ paths:
                 $ref: '#/components/schemas/ApplicationList'
 components:
   schemas:
+    ApplicationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        total:
+          type: integer
+        page:
+          type: integer
     PostureScore:
       type: object
       properties:
@@ -126,17 +137,6 @@ components:
         message:
           type: string
         code:
-          type: integer
-    ApplicationList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Application'
-        total:
-          type: integer
-        page:
           type: integer
   securitySchemes:
     BearerAuth:

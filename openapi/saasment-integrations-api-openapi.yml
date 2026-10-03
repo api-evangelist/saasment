@@ -66,18 +66,6 @@ paths:
           description: Integration deleted
 components:
   schemas:
-    CreateIntegrationRequest:
-      type: object
-      required:
-      - app_type
-      properties:
-        app_type:
-          type: string
-          description: Type of SaaS application (e.g., salesforce, microsoft365, google-workspace, github, slack, zoom, jira, servicenow, okta, aws)
-        credentials:
-          type: object
-          description: Application-specific credentials for API access
-          additionalProperties: true
     Integration:
       type: object
       properties:
@@ -99,6 +87,18 @@ components:
         created_at:
           type: string
           format: date-time
+    CreateIntegrationRequest:
+      type: object
+      required:
+      - app_type
+      properties:
+        app_type:
+          type: string
+          description: Type of SaaS application (e.g., salesforce, microsoft365, google-workspace, github, slack, zoom, jira, servicenow, okta, aws)
+        credentials:
+          type: object
+          description: Application-specific credentials for API access
+          additionalProperties: true
     IntegrationList:
       type: object
       properties:
