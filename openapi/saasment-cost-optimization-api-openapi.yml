@@ -55,6 +55,17 @@ paths:
                 $ref: '#/components/schemas/CostSummary'
 components:
   schemas:
+    CostRecommendationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CostRecommendation'
+        total:
+          type: integer
+        total_potential_savings:
+          type: number
     CostRecommendation:
       type: object
       properties:
@@ -81,17 +92,6 @@ components:
           - high
           - medium
           - low
-    CostRecommendationList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CostRecommendation'
-        total:
-          type: integer
-        total_potential_savings:
-          type: number
     CostSummary:
       type: object
       properties:

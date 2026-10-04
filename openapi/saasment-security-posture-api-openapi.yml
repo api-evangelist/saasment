@@ -68,17 +68,6 @@ paths:
                 $ref: '#/components/schemas/ApplicationList'
 components:
   schemas:
-    ApplicationList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Application'
-        total:
-          type: integer
-        page:
-          type: integer
     PostureScore:
       type: object
       properties:
@@ -108,6 +97,26 @@ components:
         last_updated:
           type: string
           format: date-time
+    ApplicationList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        total:
+          type: integer
+        page:
+          type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: integer
     Application:
       type: object
       properties:
@@ -129,15 +138,6 @@ components:
         last_scanned:
           type: string
           format: date-time
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-        message:
-          type: string
-        code:
-          type: integer
   securitySchemes:
     BearerAuth:
       type: http

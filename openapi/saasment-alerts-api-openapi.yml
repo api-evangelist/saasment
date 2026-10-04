@@ -54,15 +54,6 @@ paths:
                 $ref: '#/components/schemas/AlertList'
 components:
   schemas:
-    AlertList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alert'
-        total:
-          type: integer
     Alert:
       type: object
       properties:
@@ -92,6 +83,15 @@ components:
         created_at:
           type: string
           format: date-time
+    AlertList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+        total:
+          type: integer
   securitySchemes:
     BearerAuth:
       type: http

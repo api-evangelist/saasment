@@ -110,6 +110,17 @@ paths:
                 $ref: '#/components/schemas/Misconfiguration'
 components:
   schemas:
+    UpdateMisconfigurationRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - in_progress
+          - resolved
+          - accepted
+        notes:
+          type: string
     MisconfigurationList:
       type: object
       properties:
@@ -159,17 +170,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    UpdateMisconfigurationRequest:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - in_progress
-          - resolved
-          - accepted
-        notes:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http
