@@ -1,0 +1,46 @@
+slug: saasment
+provider: Saasment
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Cost Optimization
+  spec_file: saasment-cost-optimization-api-openapi.yml
+  capability_id: BC-600.80
+  capability_id_l1: BC-600
+  capability_name: IT Financial Management
+  confidence: 0.8
+  evidence: GET /cost/recommendations listCostRecommendations List Cost Optimization Recommendations;
+    GET /cost/summary getCostSummary
+  reason: Cloud/SaaS spend summary and cost-saving recommendations across the application estate — IT
+    financial management and cost optimisation.
+- tag: Security Posture
+  spec_file: saasment-security-posture-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.8
+  evidence: GET /posture/score getPostureScore Get Security Posture Score; "automated security configuration
+    scanning, compliance assessment, misconfiguration detection"
+  reason: Operations expose a SaaS security posture score and the inventory of monitored applications
+    — clearly cybersecurity management. Whether this is security governance/GRC reporting or vulnerability/misconfiguration
+    remediation is ambiguous from two read-only endpoints, so only the L1 is asserted.
+- tag: Misconfigurations
+  spec_file: saasment-misconfigurations-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.7
+  evidence: GET /misconfigurations listMisconfigurations; PATCH /misconfigurations/{id} updateMisconfigurationStatus
+  reason: Detection, inspection and remediation-status tracking of security misconfigurations mirrors
+    vulnerability identification and remediation workflow. Mapped to Vulnerability Management, with some
+    overlap into threat detection.

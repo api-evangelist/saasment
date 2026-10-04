@@ -125,6 +125,9 @@ apis:
   - type: Website
     url: https://www.saasment.com
 common:
+  - type: CapabilityMap
+    url: capabilities/saasment-capability-edges.yml
+    name: Saasment Business Capability Map
   - type: AgenticAccess
     url: agentic-access/saasment-agentic-access.yml
   - type: DomainSecurity
