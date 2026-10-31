@@ -1,4 +1,4 @@
-# Saasment (saasment)
+# Saasment
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,68 +66,167 @@
 
 Saasment is an AI-powered SaaS security posture management (SSPM) and cloud cost optimization platform that detects misconfigurations, compliance gaps, and cost inefficiencies across cloud applications. It provides continuous monitoring, automated breach and attack simulation, privileged access management, and seamless integrations with identity management systems and other security tools.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/saasment/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/saasment/refs/heads/main/apis.yml)
+**Areas:** SaaS Security · SSPM · Cloud Security · Cost Optimization · Compliance · Misconfigurations
 
-## Scope
+## Saasment on APIs.io
 
-- **Type:** Index
+Everything profiled for Saasment is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/saasment/](https://apis.io/providers/saasment/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- SaaS Security
-- SSPM
-- Cloud Security
-- Cost Optimization
-- Compliance
-- Misconfigurations
+- [Saasment Alerts API](https://apis.io/apis/saasment/saasment-alerts-api/) — Security alert and notification management
+- [Saasment Compliance API](https://apis.io/apis/saasment/saasment-compliance-api/) — Compliance assessment and reporting
+- [Saasment Cost Optimization API](https://apis.io/apis/saasment/saasment-cost-optimization-api/) — Cloud cost analysis and optimization recommendations
+- [Saasment Integrations API](https://apis.io/apis/saasment/saasment-integrations-api/) — SaaS application integration management
+- [Saasment Misconfigurations API](https://apis.io/apis/saasment/saasment-misconfigurations-api/) — Misconfiguration detection and remediation
+- [Saasment Security Posture API](https://apis.io/apis/saasment/saasment-security-posture-api/) — SaaS security posture assessment and monitoring
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-27
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Saasment API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Saasment API provides programmatic access to SaaS security posture management capabilities including configuration scanning, compliance assessment, misconfigurations detection, cost optimization recommendations, and integration with cloud identity systems to secure SaaS estates.
+- [Saasment Agentic Access](https://apis.io/agentic-access/saasment/saasment-agentic-access/)
 
-- **Human URL:** [https://www.saasment.com](https://www.saasment.com)
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- SaaS Security
-- SSPM
-- Cloud Security
-- Compliance
-- Cost Optimization
+- [Saasment Monitored Application](https://apis.io/schemas/saasment/saasment-application/)
+- [Saasment Misconfiguration](https://apis.io/schemas/saasment/saasment-misconfiguration/)
 
-#### Properties
+#### JSON Structure (2)
 
-- [Documentation](https://www.saasment.com/resources)
-- [Website](https://www.saasment.com)
-- [OpenAPI](openapi/saasment-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/saasment.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/saasment.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Saasment Application Structure](https://apis.io/json-structure/saasment/saasment-application-structure/)
+- [Saasment Misconfiguration Structure](https://apis.io/json-structure/saasment/saasment-misconfiguration-structure/)
 
-- [GitHub Organization](https://github.com/saasment-sspm)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Saasment Context](https://apis.io/jsonld/saasment/saasment-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Saasment SSPM Vocabulary](https://apis.io/vocabularies/saasment/saasment-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Saasment Get Posture Score Example](https://apis.io/examples/saasment/saasment-get-posture-score-example/)
+- [Saasment List Cost Recommendations Example](https://apis.io/examples/saasment/saasment-list-cost-recommendations-example/)
+- [Saasment List Misconfigurations Example](https://apis.io/examples/saasment/saasment-list-misconfigurations-example/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Saasment API](https://apis.io/collections/saasment/open-saasment/)
+- [Saasment Alerts API](https://apis.io/collections/saasment/open-saasment-alerts-api/)
+- [Saasment Alerts Compliance API](https://apis.io/collections/saasment/open-saasment-compliance-api/)
+- [Saasment Alerts Cost Optimization API](https://apis.io/collections/saasment/open-saasment-cost-optimization-api/)
+- [Saasment Alerts Integrations API](https://apis.io/collections/saasment/open-saasment-integrations-api/)
+- [Saasment Alerts Misconfigurations API](https://apis.io/collections/saasment/open-saasment-misconfigurations-api/)
+- [Saasment Alerts Security Posture API](https://apis.io/collections/saasment/open-saasment-security-posture-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Saasment — jsonschema rules](https://apis.io/rules/saasment/saasment-jsonschema-spectral-rules/)
+- [Saasment API Rules](https://apis.io/rules/saasment/saasment-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Saasment Authentication](https://apis.io/security/saasment/saasment-authentication/)
+- [Saasment Domain Security](https://apis.io/security/saasment/saasment-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Saasment Plans Pricing](https://apis.io/plans/saasment/saasment-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Saasment Rate Limits](https://apis.io/rate-limits/saasment/saasment-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Saasment Finops](https://apis.io/finops/saasment/saasment-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.saasment.com)
 - [Documentation](https://www.saasment.com/resources)
 - [Blog](https://www.saasment.com/blog)
-- [OpenAPI](openapi/saasment-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Spectral Rules](rules/saasment-rules.yml)
-- [JSON Schema](json-schema/saasment-misconfiguration-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/saasment-application-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/saasment-misconfiguration-structure.json)
-- [JSON Structure](json-structure/saasment-application-structure.json)
-- [J S O N L D Context](json-ld/saasment-context.jsonld)
-- [Vocabulary](vocabulary/saasment-vocabulary.yml)
-- [Capabilities](capabilities/saas-security-posture.yaml)
-- [L L Ms Txt](https://www.saasment.com/llms.txt)
+- [GitHub](https://github.com/saasment-sspm)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 51.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/saasment/](https://apis.io/providers/saasment/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Saasment: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/saasment/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
